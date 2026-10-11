@@ -79,6 +79,7 @@ export const projects = {
     url: "https://wordforit.app",
     text: "A private mood journal. You check in with a broad feeling and a precise word, then see patterns across weeks and months. I designed, built and shipped it on my own, as an Android app and a web app hosted in the EU.",
     stack: ["Next.js", "TypeScript", "Capacitor", "Supabase"],
+    web: { src: "/wordforit/web.png", alt: "word for it Patterns page in a desktop browser, with mood mix, context and week by week charts" },
     shots: [
       { src: "/wordforit/checkin.jpg", alt: "word for it home screen asking how are you right now, with six mood options" },
       { src: "/wordforit/patterns.jpg", alt: "Patterns screen with check in counts and a mood mix by percentage" },

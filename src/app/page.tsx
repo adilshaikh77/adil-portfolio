@@ -16,6 +16,23 @@ function Phone({ src, alt, className = "" }: { src: string; alt: string; classNa
   );
 }
 
+function Browser({ src, alt, url }: { src: string; alt: string; url: string }) {
+  return (
+    <div className="overflow-hidden rounded-xl border border-line bg-bg shadow-[0_24px_48px_-24px_rgb(23_24_26/0.3)]">
+      <div className="flex items-center gap-3 border-b border-line px-3 py-2">
+        <div aria-hidden className="flex gap-1.5">
+          {[0, 1, 2].map((i) => (
+            <span key={i} className="size-2.5 rounded-full bg-line" />
+          ))}
+        </div>
+        <span className="mx-auto rounded-md bg-surface px-3 py-0.5 font-mono text-[11px] text-muted">{url}</span>
+        <span aria-hidden className="w-[42px]" />
+      </div>
+      <Image src={src} alt={alt} width={1537} height={993} sizes="(min-width: 1024px) 600px, 100vw" className="block h-auto w-full" />
+    </div>
+  );
+}
+
 function Heading({ children }: { children: React.ReactNode }) {
   return <h2 className="mb-8 text-2xl font-medium tracking-tight">{children}</h2>;
 }
@@ -131,7 +148,10 @@ export default function Home() {
             </h3>
             <p className="mt-3 max-w-[60ch] leading-relaxed text-muted">{wordforit.text}</p>
             <Tags items={wordforit.stack} />
-            <div className="-mx-5 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible sm:px-4 sm:pb-8">
+            <div className="mt-8">
+              <Browser {...wordforit.web} url="wordforit.app" />
+            </div>
+            <div className="relative -mx-5 mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 sm:mx-0 sm:-mt-24 sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible sm:px-10 sm:pb-8">
               {wordforit.shots.map((s, i) => (
                 <Phone key={s.src} {...s} className={i === 1 ? "sm:translate-y-8" : ""} />
               ))}
