@@ -110,4 +110,4 @@ export const stack = [
 ];
 
 export const about =
-  "I studied computer science with a focus on AI at Vistula University in Warsaw. Most of my job now is understanding what planners and stakeholders need, then writing the code that makes their work simpler. I use Claude and Cursor every day to ship faster.";
+  "I studied computer science with a focus on AI at Vistula University in Warsaw. Most of my job now is understanding what planners and stakeholders need, then writing the code that makes their work simpler. AI was my major before it was everywhere; now I use it daily at work.";
