@@ -106,7 +106,7 @@ export const stack = [
   { group: "Frontend", items: ["React", "TypeScript", "Next.js", "Micro frontends"] },
   { group: "Backend", items: ["Node.js", "GraphQL", "REST", "PostgreSQL", "Python"] },
   { group: "Cloud", items: ["AWS ECS and Lambda", "DynamoDB", "CloudFormation", "Docker"] },
-  { group: "Observability", items: ["Datadog", "CloudWatch", "PagerDuty"] },
+  { group: "Observability", items: ["Datadog", "CloudWatch"] },
 ];
 
 export const about =
