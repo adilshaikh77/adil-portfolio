@@ -1,69 +1,173 @@
 import Image from "next/image";
+import { ArrowUpRight, GithubLogo, LinkedinLogo } from "@phosphor-icons/react/ssr";
+import { about, experience, profile, projects, stack, work } from "@/content";
+import { Nav } from "@/components/Nav";
+import { RulesDemo } from "@/components/RulesDemo";
+import { CopyEmail } from "@/components/CopyEmail";
+
+function Phone({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
+  return (
+    <div
+      className={`relative w-44 shrink-0 snap-center sm:w-auto overflow-hidden rounded-[2rem] border-[5px] border-[#1d1f1e] bg-[#1d1f1e] shadow-[0_24px_48px_-20px_rgb(23_24_26/0.35)] ${className}`}
+    >
+      <Image src={src} alt={alt} width={1220} height={2712} sizes="200px" className="block h-auto w-full rounded-[1.6rem]" />
+      <span aria-hidden className="absolute left-1/2 top-2 size-2.5 -translate-x-1/2 rounded-full bg-[#1d1f1e]" />
+    </div>
+  );
+}
+
+function Heading({ children }: { children: React.ReactNode }) {
+  return <h2 className="mb-8 text-2xl font-medium tracking-tight">{children}</h2>;
+}
 
 export default function Home() {
+  const { wordforit, others } = projects;
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="mx-auto max-w-6xl px-4 sm:px-8 lg:grid lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
+      <header className="pt-20 pb-12 lg:sticky lg:top-0 lg:flex lg:h-dvh lg:flex-col lg:justify-between lg:py-24">
+        <div>
+          <h1 className="rise text-4xl font-semibold tracking-tighter sm:text-5xl">{profile.name}</h1>
+          <p className="rise mt-3 text-lg" style={{ "--i": 1 } as React.CSSProperties}>
+            {profile.role}
           </p>
+          <p className="rise mt-4 max-w-xs leading-relaxed text-muted" style={{ "--i": 2 } as React.CSSProperties}>
+            {profile.intro}
+          </p>
+          <div className="rise mt-16" style={{ "--i": 3 } as React.CSSProperties}>
+            <Nav />
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+        <ul className="rise mt-8 flex items-center gap-5 text-muted" style={{ "--i": 4 } as React.CSSProperties}>
+          <li>
+            <a href={profile.github} aria-label="GitHub" className="transition-colors hover:text-fg">
+              <GithubLogo size={24} />
+            </a>
+          </li>
+          <li>
+            <a href={profile.linkedin} aria-label="LinkedIn" className="transition-colors hover:text-fg">
+              <LinkedinLogo size={24} />
+            </a>
+          </li>
+          <li>
+            <a href={`mailto:${profile.email}`} className="text-sm transition-colors hover:text-fg">
+              Email
+            </a>
+          </li>
+        </ul>
+      </header>
+
+      <main className="pb-24 lg:py-24">
+        <section id="work" className="reveal mb-28">
+          <Heading>{work.title}</Heading>
+          <p className="max-w-[60ch] leading-relaxed text-muted">{work.summary}</p>
+          <ul className="mt-6 max-w-[60ch] space-y-4 leading-relaxed">
+            {work.points.map((p) => (
+              <li key={p} className="border-l-2 border-accent pl-4">
+                {p}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-10">
+            <RulesDemo />
+          </div>
+          <dl className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
+            {work.stats.map((s) => (
+              <div key={s.label}>
+                <dt className="text-4xl font-semibold tracking-tighter text-accent">{s.value}</dt>
+                <dd className="mt-1 text-sm leading-snug text-muted">{s.label}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+
+        <section id="experience" className="reveal mb-28">
+          <Heading>Experience</Heading>
+          <p className="mb-8 max-w-[60ch] leading-relaxed text-muted">
+            All at Bayer in Warsaw. Intern to senior engineer in under four years.
+          </p>
+          <ol className="relative space-y-8 border-l border-line pl-6">
+            {experience.map((e) => (
+              <li key={e.role} className="relative">
+                <span aria-hidden className="absolute -left-[29px] top-2 size-2 rounded-full bg-accent" />
+                <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                  <h3 className="font-medium">{e.role}</h3>
+                  <span className="font-mono text-xs text-muted">{e.when}</span>
+                </div>
+                <p className="mt-2 max-w-[60ch] text-sm leading-relaxed text-muted">{e.text}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section id="projects" className="reveal mb-28">
+          <Heading>Projects</Heading>
+
+          <article className="rounded-xl border border-line bg-surface p-5 sm:p-8">
+            <h3 className="text-xl font-medium">
+              <a href={wordforit.url} className="group inline-flex items-center gap-1 hover:text-accent">
+                {wordforit.name}
+                <ArrowUpRight size={18} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </a>
+            </h3>
+            <p className="mt-3 max-w-[60ch] leading-relaxed text-muted">{wordforit.text}</p>
+            <Tags items={wordforit.stack} />
+            <div className="-mx-5 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible sm:px-4 sm:pb-8">
+              {wordforit.shots.map((s, i) => (
+                <Phone key={s.src} {...s} className={i === 1 ? "sm:translate-y-8" : ""} />
+              ))}
+            </div>
+          </article>
+
+          <div className="mt-12 grid gap-10 sm:grid-cols-2">
+            {others.map((p) => (
+              <article key={p.name}>
+                <h3 className="font-medium">
+                  <a href={p.url} className="group inline-flex items-center gap-1 hover:text-accent">
+                    {p.name}
+                    <ArrowUpRight size={16} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  </a>
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{p.text}</p>
+                <Tags items={p.stack} />
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="about" className="reveal mb-28">
+          <Heading>About</Heading>
+          <p className="max-w-[60ch] leading-relaxed">{about}</p>
+          <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8">
+            {stack.map((g) => (
+              <div key={g.group}>
+                <h3 className="text-sm font-medium">{g.group}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{g.items.join(", ")}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <footer className="reveal border-t border-line pt-10">
+          <p className="text-2xl font-medium tracking-tight">Want to talk?</p>
+          <p className="mt-2 text-muted">The fastest way to reach me is email.</p>
+          <div className="mt-6">
+            <CopyEmail email={profile.email} />
+          </div>
+        </footer>
       </main>
     </div>
+  );
+}
+
+function Tags({ items }: { items: string[] }) {
+  return (
+    <ul className="mt-4 flex flex-wrap gap-2">
+      {items.map((t) => (
+        <li key={t} className="rounded-full bg-accent/10 px-3 py-1 text-xs text-accent">
+          {t}
+        </li>
+      ))}
+    </ul>
   );
 }
