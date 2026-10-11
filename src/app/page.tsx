@@ -42,7 +42,7 @@ export default function Home() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-8 lg:grid lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
-      <header className="pt-20 pb-12 lg:sticky lg:top-0 lg:flex lg:h-dvh lg:flex-col lg:justify-between lg:py-24">
+      <header className="pt-12 pb-12 lg:sticky lg:top-0 lg:flex lg:h-dvh lg:flex-col lg:justify-between lg:py-16">
         <div>
           <h1 className="rise text-4xl font-semibold tracking-tighter sm:text-5xl">{profile.name}</h1>
           <p className="rise mt-3 text-lg" style={{ "--i": 1 } as React.CSSProperties}>
@@ -93,7 +93,7 @@ export default function Home() {
         </ul>
       </header>
 
-      <main className="pb-24 lg:py-24">
+      <main className="pb-24 lg:py-16">
         <section id="work" className="reveal mb-28">
           <Heading>{work.title}</Heading>
           <p className="max-w-[60ch] leading-relaxed text-muted">{work.summary}</p>
