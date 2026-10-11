@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowUpRight, GithubLogo, LinkedinLogo } from "@phosphor-icons/react/ssr";
+import { ArrowUpRight, DownloadSimple, GithubLogo, LinkedinLogo } from "@phosphor-icons/react/ssr";
 import { about, experience, profile, projects, stack, work } from "@/content";
 import { Nav } from "@/components/Nav";
 import { RulesDemo } from "@/components/RulesDemo";
@@ -34,11 +34,30 @@ export default function Home() {
           <p className="rise mt-4 max-w-xs leading-relaxed text-muted" style={{ "--i": 2 } as React.CSSProperties}>
             {profile.intro}
           </p>
-          <div className="rise mt-16" style={{ "--i": 3 } as React.CSSProperties}>
+          <div className="rise mt-6 flex items-center gap-2" style={{ "--i": 3 } as React.CSSProperties}>
+            <a
+              href={profile.resume}
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center gap-1.5 rounded-full bg-fg px-4 py-2 text-sm text-bg transition hover:bg-accent active:scale-[0.98]"
+            >
+              View resume
+              <ArrowUpRight size={14} />
+            </a>
+            <a
+              href={profile.resume}
+              download
+              aria-label="Download resume as PDF"
+              className="inline-flex size-9 items-center justify-center rounded-full border border-line text-muted transition hover:border-fg hover:text-fg active:scale-[0.98]"
+            >
+              <DownloadSimple size={16} />
+            </a>
+          </div>
+          <div className="rise mt-14" style={{ "--i": 4 } as React.CSSProperties}>
             <Nav />
           </div>
         </div>
-        <ul className="rise mt-8 flex items-center gap-5 text-muted" style={{ "--i": 4 } as React.CSSProperties}>
+        <ul className="rise mt-8 flex items-center gap-5 text-muted" style={{ "--i": 5 } as React.CSSProperties}>
           <li>
             <a href={profile.github} aria-label="GitHub" className="transition-colors hover:text-fg">
               <GithubLogo size={24} />

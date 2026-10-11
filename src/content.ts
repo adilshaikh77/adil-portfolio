@@ -6,6 +6,7 @@ export const profile = {
   email: "shaikhadil881@gmail.com",
   github: "https://github.com/adilshaikh77",
   linkedin: "https://www.linkedin.com/in/adil-shaikh-7313b91a1",
+  resume: "/Adil_Shaikh_Resume.pdf",
 };
 
 export const work = {
