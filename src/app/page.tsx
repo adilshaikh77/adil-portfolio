@@ -124,7 +124,7 @@ export default function Home() {
 
           <article className="rounded-xl border border-line bg-surface p-5 sm:p-8">
             <h3 className="text-xl font-medium">
-              <a href={wordforit.url} className="group inline-flex items-center gap-1 hover:text-accent">
+              <a href={wordforit.url} target="_blank" rel="noopener" className="group inline-flex items-center gap-1 hover:text-accent">
                 {wordforit.name}
                 <ArrowUpRight size={18} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </a>
@@ -142,7 +142,7 @@ export default function Home() {
             {others.map((p) => (
               <article key={p.name}>
                 <h3 className="font-medium">
-                  <a href={p.url} className="group inline-flex items-center gap-1 hover:text-accent">
+                  <a href={p.url} target="_blank" rel="noopener" className="group inline-flex items-center gap-1 hover:text-accent">
                     {p.name}
                     <ArrowUpRight size={16} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                   </a>

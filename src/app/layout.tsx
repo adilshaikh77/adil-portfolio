@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://adil.heyshaikh.com"),
   title: "Adil Shaikh",
   description: "Full stack engineer in Warsaw. Crop planning software at Bayer, and my own products on the side.",
 };
